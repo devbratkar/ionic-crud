@@ -1,0 +1,104 @@
+.add-user-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-user-box {
+  background-color: white;
+  width: 50vw;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 30px 20px;
+}
+
+
+
+.add-user-box .add-user-heading {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-user-box .add-user-heading h2 {
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  /* color: black; */
+}
+
+.add-user-icon {
+  font-size: 50px;
+  stroke: chocolate;
+}
+
+.add-user-icon path[stroke-linecap="round"] {
+  stroke-width: 1px;
+}
+
+.add-user-box form {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.add-user-box form ion-item {
+  margin-bottom: 10px;
+  --background: transparent;
+}
+
+.add-user-box form ion-label {
+  /* color: white; */
+}
+
+.add-user-box form .form-div {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  align-items: center;
+  margin: 2px 0;
+}
+
+.add-user-box form .form-div .input-with-helper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.add-user-box form .form-div .MuiSelect-select,
+.add-user-box form .form-div input {
+  width: 30vw !important;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.form-actions ion-button {
+  flex: 1;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .add-user-box {
+    width: 90vw;
+    background-color: transparent;
+  }
+
+  .add-user-box>* {
+    color: white
+  }
+}
+
+
+.add-user-box {
+  background-color: transparent;
+}

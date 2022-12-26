@@ -1,0 +1,7 @@
+{
+  "name": "learn-one",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
