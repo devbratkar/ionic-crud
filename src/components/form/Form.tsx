@@ -169,7 +169,7 @@ export const Form: React.FC<FormProps> = (props) => {
                             options?.value
                           )}
                           onIonChange={(e) => {
-                            const { name, checked, value } = e.target;
+                            const { name, checked } = e.target;
                             console.log(checked);
                             const data: any[] = getValues(name);
                             if (checked)
@@ -360,7 +360,7 @@ export const Form: React.FC<FormProps> = (props) => {
                       if (value === "") return "Required";
                     },
                     pattern: {
-                      value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                      value: /^[\w-/.]+@([\w-]+\.)+[\w-]{2,4}$/g,
                       message: "Invalid email.",
                     },
                   })}

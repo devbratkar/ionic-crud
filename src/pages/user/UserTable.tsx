@@ -1,5 +1,5 @@
 import { IonPage, useIonViewDidLeave, useIonViewWillEnter } from "@ionic/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Table } from "../../components/datatable/Table";
 import { IonHeaderWrapper } from "../../components/ionwrapper/IonHeaderWrapper";
 import { deleteUser, getAllUser } from "../../services/users/userServices";

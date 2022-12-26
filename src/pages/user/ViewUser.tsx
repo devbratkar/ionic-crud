@@ -22,7 +22,7 @@ export const ViewUser = () => {
   const [view, setView] = useState({});
 
   useIonViewDidEnter(() => {
-    getOneUser(params?.id)
+    getOneUser(Number(params?.id))
       .then((res) => {
         setView(res.data.data);
       })
