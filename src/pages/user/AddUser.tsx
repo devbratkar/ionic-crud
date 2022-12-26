@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { object, string, boolean, number, array } from "yup";
-import { useFormik } from "formik";
 import { Form } from "../../components/form/Form";
 import { USER_FORM, userInitialState } from "../../constants/FormSource";
 import "../../styles/adduser.css";
@@ -21,40 +19,11 @@ import "../../styles/navbar.css";
 import { IonHeaderWrapper } from "../../components/ionwrapper/IonHeaderWrapper";
 import { useForm } from "react-hook-form";
 import { User } from "../../types/userTypes";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 
 type Params = {
   id?: string;
 };
-
-const userValidation = object({
-  firstName: string().required("Enter your first name."),
-  lastName: string().required("Enter your last name."),
-  email: string().email().required("Enter your email."),
-  mobile: number()
-    .typeError("Mobile number should be number.")
-    .required("Enter your mobile number.")
-    .test("len", "Must be exactly 10 characters.", (val) => {
-      if (!val) return false;
-      return val.toString().length === 10;
-    }),
-  hobbies: array().min(1).required("Select atleast one."),
-  dob: string()
-    .test((val: string | any): boolean => {
-      if (new Date(val).getTime() > new Date("01,01,2015").getTime())
-        return false;
-      return true;
-    })
-    .required("Please select Date of Birth.."),
-  gender: string().required("Please select gender."),
-  country: string().required("Select country."),
-  state: string().required("Select state."),
-  city: string().required("Select city."),
-  address: string().required("Enter your address."),
-  termsAndConditions: boolean()
-    .nullable()
-    .required("Agree to the terms and conditions."),
-});
 
 export const AddUser: React.FC = () => {
   const history = useHistory();
@@ -92,12 +61,11 @@ export const AddUser: React.FC = () => {
     console.log(values);
     const hobbies = values.hobbies.join(",");
     if (params?.id && path.includes("user/edit")) {
-      return await updateOneUser(params?.id, { ...values, hobbies })
-        .then((res) => {
-          formik.resetForm();
+      return await updateOneUser(Number(params?.id), { ...values, hobbies })
+        .then((res: AxiosResponse) => {
           history.push("/");
         })
-        .catch((err) => {
+        .catch((err: AxiosError) => {
           console.log(err);
         });
     }
@@ -111,15 +79,9 @@ export const AddUser: React.FC = () => {
       });
   };
 
-  const formik = useFormik({
-    initialValues: userSchema,
-    validationSchema: userValidation,
-    onSubmit: handleAddUser,
-  });
-
   useIonViewDidEnter(() => {
     if (params?.id && path.includes("user/edit")) {
-      return getOneUser(params?.id)
+      return getOneUser(Number(params?.id))
         .then((res) => {
           const hobbies = res?.data?.data?.hobbies?.split(",");
           setUserSchema({ ...res.data.data, hobbies });
@@ -154,7 +116,6 @@ export const AddUser: React.FC = () => {
             <Form
               formData={USER_FORM}
               onSubmit={handleAddUser}
-              // formHook={formHook}
               register={register}
               control={control}
               errors={errors}
