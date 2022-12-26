@@ -1,8 +1,6 @@
-import { IonItemGroup } from '@ionic/core/components';
 import { IonCol, IonGrid, IonItem, IonRow, IonText } from '@ionic/react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react'
 
 export const BoxWrapper = ({ children, className, sx }) => (
   <Box
