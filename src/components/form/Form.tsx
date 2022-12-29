@@ -77,7 +77,7 @@ export const Form: React.FC<FormProps> = (props) => {
                       if (values === "") return "Field should not be empty.";
                     },
                   })}
-                  data-testid={item?.testid}
+                  data-testId={item?.testid}
                   name={item?.name}
                   onIonChange={(e) => {
                     changeHandlerRHF(e);
@@ -122,7 +122,7 @@ export const Form: React.FC<FormProps> = (props) => {
                   {...register(item?.name, {
                     required: "This field is required.",
                   })}
-                  data-testid={item?.testid}
+                  data-testId={item?.testid}
                   name={item?.name}
                   onIonChange={(e) => {
                     changeHandlerRHF(e);
@@ -163,7 +163,7 @@ export const Form: React.FC<FormProps> = (props) => {
                             required: "This field is required.",
                             value: [],
                           })}
-                          data-testid={item?.testid}
+                          data-testId={item?.testid}
                           name={`${item?.name}`}
                           checked={control._formValues[item?.name].includes(
                             options?.value
@@ -203,7 +203,7 @@ export const Form: React.FC<FormProps> = (props) => {
                   {...register(item?.name, {
                     required: "Please agree to the terms and conditions.",
                   })}
-                  data-testid={item?.testid}
+                  data-testId={item?.testid}
                   checked={Boolean(control._formValues[item?.name])}
                   onIonChange={(e) => {
                     const { name, checked } = e.target;
@@ -236,7 +236,7 @@ export const Form: React.FC<FormProps> = (props) => {
                     id="datetime"
                     presentation="date"
                     ref={ref}
-                    data-testid={item?.testid}
+                    data-testId={item?.testid}
                     name={name}
                     defaultValue={
                       defaultValues[item?.name] &&
@@ -269,7 +269,7 @@ export const Form: React.FC<FormProps> = (props) => {
                   {...register(item?.name, {
                     required: "This field is required.",
                   })}
-                  data-testid={item?.testid}
+                  data-testId={item?.testid}
                   placeholder={item?.placeholder}
                   onIonInput={(e) => changeHandlerRHF(e)}
                 ></IonTextarea>
@@ -299,7 +299,8 @@ export const Form: React.FC<FormProps> = (props) => {
                       return true;
                     },
                   })}
-                  data-testid={item?.testid}
+                  value={control?._formValues[item?.name] ?? ""}
+                  data-testId={item?.testid}
                   name={item?.name}
                   onIonChange={(e) => changeHandlerRHF(e)}
                 />
@@ -331,7 +332,7 @@ export const Form: React.FC<FormProps> = (props) => {
                         return "Mobile number should be of 10 characters.";
                     },
                   })}
-                  data-testid={item?.testid}
+                  data-testId={item?.testid}
                   name={item?.name}
                   onIonInput={(e) => changeHandlerRHF(e)}
                 />
@@ -364,7 +365,7 @@ export const Form: React.FC<FormProps> = (props) => {
                       message: "Invalid email.",
                     },
                   })}
-                  data-testid={item?.testid}
+                  data-testId={item?.testid}
                   name={item?.name}
                   onIonInput={(e) => changeHandlerRHF(e)}
                 />
@@ -388,7 +389,7 @@ export const Form: React.FC<FormProps> = (props) => {
         >
           Cancel
         </IonButton>
-        <IonButton className="form-submit" type="submit" color="success">
+        <IonButton data-testId="button-form-submit" className="form-submit" type="submit" color="success">
           Submit
         </IonButton>
       </div>
