@@ -18,7 +18,7 @@
     "@mui/x-date-pickers": "^5.0.10",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^12.8.3",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^26.0.20",
     "@types/node": "^12.19.15",
     "@types/react": "^18.0.17",
@@ -30,6 +30,7 @@
     "formik": "^2.2.9",
     "history": "^4.9.0",
     "ionicons": "^6.0.3",
+    "jest-junit": "^15.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.0",
@@ -57,7 +58,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!(@ionic|ionicons))/\" --watchAll=false --reporters=default --reporters=jest-junit",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
